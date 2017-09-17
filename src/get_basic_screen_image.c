@@ -20,12 +20,20 @@ void	get_basic_screen_image(t_screen *screen, int *image, t_object *objects, t_l
 	i = 0;
 	while (i < X_DIM * Y_DIM)
 	{
-		intersect = get_first_object_ray_hits(screen->coorarr + i, screen->vectors + i, objects);
-		if (intersect)
-			image[i] = find_colour_of_intersect(intersect, objects, lights);
+		if (1)//(i % X_DIM) % 2 == 0 && (i / X_DIM) % 2 == 0)
+		{
+			intersect = get_first_object_ray_hits(screen->coorarr + i, screen->vectors + i, objects);
+			if (intersect)
+				image[i] = find_colour_of_intersect(intersect, objects, lights);
+			else
+			{
+				image[i] = 0x222222;
+				free(intersect);
+			}
+		}
 		else
-			image[i] = 0;
-		free(intersect);
+			image[i] = -1;
 		++i;
 	}
+	apply_pixel_extrapolation(image);
 }

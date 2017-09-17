@@ -25,24 +25,42 @@
 # define INFIN 999999999
 # define X_DIM 801
 # define Y_DIM 601
+
 # define SPHERE 1
+# define PLANE 2
+
 # define VEIW_DIST 800
 
 void	print_intersect(t_coor *intersect);
+void	malloc_break(char c);
 
 void	coor_diff(t_coor *result, t_coor coor1, t_coor coor2);
 double	dot_product(t_coor coor1, t_coor coor2);
+int	colour_merge(int col1, int col2);
+int	colour_percent(int col, double percent);
+int	colour_sum(int col1, int col2);
+double	vector_size(t_coor vector);
+void	get_reflection(t_coor *reflection, t_coor *vector, t_intersect *intersect);
 
 t_light	*lights_init(void);
 t_object	*objects_init(void);
 t_screen	*create_screen(void);
 
 int	get_sphere_intersections(t_intersect *intersect, t_object *object, t_coor *point, t_coor *vector);
+int	get_plane_intersections(t_intersect *intersect, t_object *object, t_coor *point, t_coor *vector);
+
+double	get_light_modifier(t_intersect *intersect, t_light *light);
+void	get_normal_to_intersect(t_coor *normal, t_intersect *intersect);
+void	get_normal_of_sphere(t_coor *normal, t_intersect *intersect);
+void	get_normal_of_plane(t_coor *normal, t_intersect *intersect);
 
 void	draw_objects(t_info *info);
 void	get_basic_screen_image(t_screen *screen, int *image, t_object *objects, t_light *lights);
 t_intersect	*get_first_object_ray_hits(t_coor *point, t_coor *vector, t_object *objects);
 int	find_colour_of_intersect(t_intersect *intersect, t_object *objects, t_light *lights);
+int	get_reflect_col(t_intersect *intersect, t_object *objects, t_light *lights);
+int	get_diffuse_col(t_intersect *intersect, t_object *objects, t_light *lights);
 int	path_to_light(t_coor coor, t_object *objects, t_light *light);
+void	apply_pixel_extrapolation(int *image);
 
 #endif

@@ -1,26 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   find_colour_of_intersect.c                         :+:      :+:    :+:   */
+/*   colour_percent.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: twalton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/09/10 16:27:01 by twalton           #+#    #+#             */
-/*   Updated: 2017/09/10 16:27:01 by twalton          ###   ########.fr       */
+/*   Created: 2017/09/15 19:21:45 by twalton           #+#    #+#             */
+/*   Updated: 2017/09/15 19:21:45 by twalton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-int	find_colour_of_intersect(t_intersect *intersect, t_object *objects, t_light *lights)
+int	colour_percent(int col, double percent)
 {
-	int col1;
-	int col2;
+	int red;
+	int green;
+	int blue;
 
-	col1 = get_diffuse_col(intersect, objects, lights);
-	col1 = colour_percent(col1, 100 - intersect->object->shine);
-	col2 = get_reflect_col(intersect, objects, lights);
-	col2 = colour_percent(col2, intersect->object->shine);
-	free(intersect);
-	return (colour_sum(col1, col2));
+	blue = col % 256;
+	col /= 256;
+	green = col % 256;
+	col /= 256;
+	red = col % 256;
+	red = (int)((double)red * percent / 100);
+	green = (int)((double)green * percent / 100);
+	blue = (int)((double)blue * percent / 100);
+	return (blue + green * 256 + red * 256 * 256);
 }

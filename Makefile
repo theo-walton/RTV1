@@ -5,6 +5,18 @@ SRC = \
 	$(addprefix src/, \
 \
 	coor_diff.c \
+	malloc_break.c \
+	get_plane_intersections.c \
+	get_normal_of_plane.c \
+	get_reflection.c \
+	get_reflect_col.c \
+	get_diffuse_col.c \
+	colour_sum.c \
+	colour_percent.c \
+	vector_size.c \
+	get_light_modifier.c \
+	get_normal_of_sphere.c \
+	get_normal_to_intersect.c \
 	create_screen.c \
 	dot_product.c \
 	draw_objects.c \
@@ -15,6 +27,8 @@ SRC = \
 	lights_init.c \
 	main.c \
 	objects_init.c \
+	apply_pixel_extrapolation.c \
+	colour_merge.c \
 	path_to_light.c \
 	print_intersect.c \
 	) \
@@ -29,7 +43,21 @@ OBJ =  \
 	$(addprefix obj/, \
 \
 	ft_memmove.o \
+	malloc_break.o \
+	get_reflection.o \
+	get_reflect_col.o \
+	get_diffuse_col.o \
+	colour_sum.o \
+	get_plane_intersections.o \
+	get_normal_of_plane.o \
+	colour_percent.o \
+	vector_size.o \
+	get_light_modifier.o \
+	get_normal_of_sphere.o \
+	get_normal_to_intersect.o \
 	coor_diff.o \
+	apply_pixel_extrapolation.o \
+	colour_merge.o \
 	create_screen.o \
 	dot_product.o \
 	draw_objects.o \
@@ -67,5 +95,8 @@ clean:
 
 fclean: clean
 	/bin/rm -rf $(NAME)
+
+test: $(NAME)
+	./rt
 
 re: fclean all

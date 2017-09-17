@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   find_colour_of_intersect.c                         :+:      :+:    :+:   */
+/*   get_normal_to_intersect.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: twalton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/09/10 16:27:01 by twalton           #+#    #+#             */
-/*   Updated: 2017/09/10 16:27:01 by twalton          ###   ########.fr       */
+/*   Created: 2017/09/14 20:51:43 by twalton           #+#    #+#             */
+/*   Updated: 2017/09/14 20:51:43 by twalton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-int	find_colour_of_intersect(t_intersect *intersect, t_object *objects, t_light *lights)
-{
-	int col1;
-	int col2;
+/*
+** NOTE: does not guarantee normal is of unit length
+*/
 
-	col1 = get_diffuse_col(intersect, objects, lights);
-	col1 = colour_percent(col1, 100 - intersect->object->shine);
-	col2 = get_reflect_col(intersect, objects, lights);
-	col2 = colour_percent(col2, intersect->object->shine);
-	free(intersect);
-	return (colour_sum(col1, col2));
+void	get_normal_to_intersect(t_coor *normal, t_intersect *intersect)
+{
+	if (intersect->object->type == SPHERE)
+	{
+		get_normal_of_sphere(normal, intersect);
+		return ;
+	}
 }

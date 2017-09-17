@@ -63,7 +63,7 @@ static void	initialize_coordinates(t_screen *new)
 		while (j < Y_DIM)
 		{
 			new->coorarr[i + X_DIM * j].x = i - X_DIM / 2;
-			new->coorarr[i + X_DIM * j].y = j - Y_DIM / 2;
+			new->coorarr[i + X_DIM * j].y = Y_DIM / 2 - j;
 			new->coorarr[i + X_DIM * j].z = 0;
 			++j;
 		}
@@ -76,7 +76,7 @@ t_screen	*create_screen(void)
 {
 	t_screen *new;
 
-	new = malloc(sizeof(*new));
+	new = malloc(sizeof(t_screen));
 	new->coorarr = malloc(sizeof(t_coor) * X_DIM * Y_DIM);
 	new->vectors = malloc(sizeof(t_coor) * X_DIM * Y_DIM);
 	initialize_coordinates(new);

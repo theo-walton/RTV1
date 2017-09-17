@@ -13,6 +13,14 @@
 #ifndef RTV1_STRUCTS_H
 # define RTV1_STRUCTS_H
 
+
+typedef struct s_colour
+{
+	int red;
+	int green;
+	int blue;
+}	t_colour;
+
 typedef struct s_coor
 {
 	double x;
@@ -64,6 +72,7 @@ typedef struct s_object
 typedef struct s_intersect
 {
 	t_coor intersect;
+	t_coor vector;
 	t_object *object;
 }	t_intersect;
 
@@ -75,7 +84,6 @@ typedef struct	s_light
 	double red;
 	double green;
 	double blue;
-
 }	t_light;
 
 typedef struct	s_screen

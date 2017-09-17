@@ -1,26 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   find_colour_of_intersect.c                         :+:      :+:    :+:   */
+/*   get_reflection.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: twalton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/09/10 16:27:01 by twalton           #+#    #+#             */
-/*   Updated: 2017/09/10 16:27:01 by twalton          ###   ########.fr       */
+/*   Created: 2017/09/15 20:08:55 by twalton           #+#    #+#             */
+/*   Updated: 2017/09/15 20:08:55 by twalton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-int	find_colour_of_intersect(t_intersect *intersect, t_object *objects, t_light *lights)
+void	get_reflection(t_coor *reflection, t_coor *vector, t_intersect *intersect)
 {
-	int col1;
-	int col2;
+	t_coor normal;
+	double size;
 
-	col1 = get_diffuse_col(intersect, objects, lights);
-	col1 = colour_percent(col1, 100 - intersect->object->shine);
-	col2 = get_reflect_col(intersect, objects, lights);
-	col2 = colour_percent(col2, intersect->object->shine);
-	free(intersect);
-	return (colour_sum(col1, col2));
+	get_normal_to_intersect(&normal, intersect);
+	size = vector_size(normal);
+	normal.x /= size;
+	normal.y /= size;
+	normal.z /= size;
+	size = 2 * dot_product(*vector, normal);
+	normal.x *= size;
+	normal.y *= size;
+	normal.z *= size;
+	coor_diff(reflection, *vector, normal);
 }

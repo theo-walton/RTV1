@@ -41,7 +41,6 @@ static void	get_min_intersection(t_coor *point, t_coor *vector, t_intersect *int
 	min_dist = INFIN;
 	while (i)
 	{
-		print_intersect(&intersects[i - 1].intersect);
 		dist = get_intersect_dist(point, vector, intersects + i - 1);
 		if (dist < min_dist)
 		{
@@ -77,13 +76,17 @@ t_intersect	*get_first_object_ray_hits(t_coor *point, t_coor *vector, t_object *
 		if (objects[i].type == SPHERE)
 			if (!get_sphere_intersections(intersects + 2 * i, objects + i, point, vector))
 				++counter;
+		if (objects[i].type == PLANE)
+			if (!get_plane_intersections(intersects + 2 * i, objects + i, point, vector))
+				++counter;
 		++i;
 	}
 	if (i == counter)
 		return (NULL);
 	get_min_intersection(point, vector, intersects, 2 * i);
-	print_intersect(&intersects[0].intersect);
-	write(1, "____", 4);
 	ret = copy_intersect(intersects);
+	ret->vector.x = vector->x;
+	ret->vector.y = vector->y;
+	ret->vector.z = vector->z;
 	return (ret);
 }

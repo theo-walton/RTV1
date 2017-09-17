@@ -1,26 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   find_colour_of_intersect.c                         :+:      :+:    :+:   */
+/*   colour_merge.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: twalton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/09/10 16:27:01 by twalton           #+#    #+#             */
-/*   Updated: 2017/09/10 16:27:01 by twalton          ###   ########.fr       */
+/*   Created: 2017/09/14 16:38:10 by twalton           #+#    #+#             */
+/*   Updated: 2017/09/14 16:38:10 by twalton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-int	find_colour_of_intersect(t_intersect *intersect, t_object *objects, t_light *lights)
+int	colour_merge(int col1, int col2)
 {
-	int col1;
-	int col2;
+	int redav;
+	int blueav;
+	int greenav;
 
-	col1 = get_diffuse_col(intersect, objects, lights);
-	col1 = colour_percent(col1, 100 - intersect->object->shine);
-	col2 = get_reflect_col(intersect, objects, lights);
-	col2 = colour_percent(col2, intersect->object->shine);
-	free(intersect);
-	return (colour_sum(col1, col2));
+	blueav = col1 % 256 + col2 % 256;
+	col1 /= 256;
+	col2 /= 256;
+	greenav = col1 % 256 + col2 % 256;
+	col1 /= 256;
+	col2 /= 256;
+	redav = col1 % 256 + col2 % 256;
+	blueav /= 2;
+	greenav /= 2;
+	redav /= 2;
+	return (blueav + 256 * greenav + 256 * 256 * redav);
 }
