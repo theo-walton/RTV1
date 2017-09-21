@@ -16,7 +16,16 @@ int	get_reflect_col(t_intersect *intersect, t_object *objects, t_light *lights)
 {
 	t_coor reflect;
 	t_intersect *new;
+	static unsigned int total_reflections;
 
+	if (intersect == NULL)
+	{
+		total_reflections = 0;
+		return (0);
+	}
+	++total_reflections;
+	if (total_reflections == MAX_REFLECT)
+		return (0);
 	get_reflection(&reflect, &(intersect->vector), intersect);
 	new = get_first_object_ray_hits(&(intersect->intersect), &reflect, objects);
 	if (new == 0)

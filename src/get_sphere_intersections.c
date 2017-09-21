@@ -35,7 +35,7 @@ int	get_sphere_intersections(t_intersect *intersect, t_object *object, t_coor *p
 
 	sphere = object->type_info;
 	coor_diff(&temp, *point, sphere->center);
-	d[0] = dot_product(*vector, temp); 
+	d[0] = dot_product(*vector, temp);
 	disc = d[0] * d[0] - dot_product(temp, temp) + sphere->radius * sphere->radius;
 	if (disc < 0)
 		return (nullify_intersect(intersect, 0));

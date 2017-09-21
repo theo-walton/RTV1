@@ -33,7 +33,8 @@ static int	intersect_colour(t_intersect *intersect, t_light *light)
 
 	light_modifier = get_light_modifier(intersect, light);
 	dist = get_distance(&intersect->intersect, light);
-	light_modifier *= 50000 / (dist * dist);
+	light_modifier *= DECAY_CONST / (dist * dist);
+	light_modifier *= (100 - intersect->object->shine) / 100;
 	red = light->red * light_modifier;
 	blue = light->blue * light_modifier;
 	green = light->green * light_modifier;

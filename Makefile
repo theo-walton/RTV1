@@ -5,6 +5,12 @@ SRC = \
 	$(addprefix src/, \
 \
 	coor_diff.c \
+	second_order_solver.c \
+	get_cylinder_intersections.c \
+	get_normal_of_cylinder.c \
+	cross_product.c \
+	get_line_point_distance.c \
+	get_shine.c \
 	malloc_break.c \
 	get_plane_intersections.c \
 	get_normal_of_plane.c \
@@ -43,6 +49,12 @@ OBJ =  \
 	$(addprefix obj/, \
 \
 	ft_memmove.o \
+	second_order_solver.o \
+	get_cylinder_intersections.o \
+	get_normal_of_cylinder.o \
+	get_line_point_distance.o \
+	get_shine.o \
+	cross_product.o \
 	malloc_break.o \
 	get_reflection.o \
 	get_reflect_col.o \

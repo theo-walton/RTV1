@@ -24,7 +24,10 @@ void	get_basic_screen_image(t_screen *screen, int *image, t_object *objects, t_l
 		{
 			intersect = get_first_object_ray_hits(screen->coorarr + i, screen->vectors + i, objects);
 			if (intersect)
+			{
 				image[i] = find_colour_of_intersect(intersect, objects, lights);
+				get_reflect_col(NULL, NULL, NULL);
+			}
 			else
 			{
 				image[i] = 0x222222;

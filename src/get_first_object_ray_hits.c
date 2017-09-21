@@ -79,6 +79,9 @@ t_intersect	*get_first_object_ray_hits(t_coor *point, t_coor *vector, t_object *
 		if (objects[i].type == PLANE)
 			if (!get_plane_intersections(intersects + 2 * i, objects + i, point, vector))
 				++counter;
+		if (objects[i].type == CYLINDER)
+			if (!get_cylinder_intersections(intersects + 2 * i, objects + i, point, vector))
+				++counter;
 		++i;
 	}
 	if (i == counter)

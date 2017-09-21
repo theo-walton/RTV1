@@ -48,7 +48,8 @@ typedef struct s_sphere
 
 typedef struct s_cylinder
 {
-	t_line line;
+	t_coor point;
+	t_coor vector;
 	double radius;
 }	t_cylinder;
 

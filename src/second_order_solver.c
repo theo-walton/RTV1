@@ -1,28 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   find_colour_of_intersect.c                         :+:      :+:    :+:   */
+/*   second_order_solver.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: twalton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/09/10 16:27:01 by twalton           #+#    #+#             */
-/*   Updated: 2017/09/10 16:27:01 by twalton          ###   ########.fr       */
+/*   Created: 2017/09/18 23:45:10 by twalton           #+#    #+#             */
+/*   Updated: 2017/09/18 23:45:10 by twalton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-int	find_colour_of_intersect(t_intersect *intersect, t_object *objects, t_light *lights)
+void	second_order_solver(double *result, double a, double b, double c)
 {
-	int col1;
-	int col2;
+	double disc;
 
-	col2 = 0;
-	col1 = get_diffuse_col(intersect, objects, lights);
-	col2 = get_reflect_col(intersect, objects, lights);
-	col2 = colour_percent(col2, intersect->object->shine);
-	free(intersect);
-	col1 = colour_sum(col1, col2);
-	col2 = get_shine(intersect, objects, lights);
-	return (colour_sum(col1, col2));
+	disc = b * b - 4 * a * c;
+	if (disc < 0)
+	{
+		result[0] = INFIN;
+		result[1] = INFIN;
+		return ;
+	}
+	if (disc == 0)
+	{
+		result[0] = -b;
+		result[1] = INFIN;
+		return ;
+	}
+	disc = sqrt(disc) / (2 * a);
+	result[0] = -b + disc;
+	result[1] = -b - disc;
 }

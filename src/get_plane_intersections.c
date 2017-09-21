@@ -26,8 +26,6 @@ static int	nullify_intersect(t_intersect *intersect, int ret)
 	return (ret);
 }
 
-#include <stdio.h>
-
 int	get_plane_intersections(t_intersect *intersect, t_object *object, t_coor *point, t_coor *vector)
 {
 	t_plane *plane;
@@ -37,14 +35,12 @@ int	get_plane_intersections(t_intersect *intersect, t_object *object, t_coor *po
 	plane = object->type_info;
 	coor_diff(&temp, plane->point, *point);
 	dist = dot_product(*vector, plane->normal);
-	write(1, "5", 1);
 	if (dist == 0)
 		return (nullify_intersect(intersect, 0));
 	dist = dot_product(temp, plane->normal) / dist;
-	write(1, "6", 1);
-	if (dist <= 0)
+	if (dist <= 1)
 		return (nullify_intersect(intersect, 0));
-	write(1, "7", 1);
+	dist -= 1;
 	intersect[0].object = object;
 	intersect[1].object = NULL;
 	get_intersect(&(intersect[0].intersect), dist, point, vector);

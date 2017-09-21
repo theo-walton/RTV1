@@ -23,4 +23,14 @@ void	get_normal_to_intersect(t_coor *normal, t_intersect *intersect)
 		get_normal_of_sphere(normal, intersect);
 		return ;
 	}
+	if (intersect->object->type == PLANE)
+	{
+		get_normal_of_plane(normal, intersect);
+		return ;
+	}
+	if (intersect->object->type == CYLINDER)
+	{
+		get_normal_of_cylinder(normal, intersect);
+		return ;
+	}
 }
