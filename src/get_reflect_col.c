@@ -12,23 +12,24 @@
 
 #include "rtv1.h"
 
-int	get_reflect_col(t_intersect *intersect, t_object *objects, t_light *lights)
+void	get_reflect_col(t_colour *result, t_intersect *intersect, t_object *objects, t_light *lights)
 {
 	t_coor reflect;
 	t_intersect *new;
 	static unsigned int total_reflections;
 
-	if (intersect == NULL)
+	if (result == NULL)
 	{
 		total_reflections = 0;
-		return (0);
+		return ;
 	}
+	zero_colour(result);
 	++total_reflections;
 	if (total_reflections == MAX_REFLECT)
-		return (0);
+		return ;
 	get_reflection(&reflect, &(intersect->vector), intersect);
 	new = get_first_object_ray_hits(&(intersect->intersect), &reflect, objects);
-	if (new == 0)
-		return (0);
-	return (find_colour_of_intersect(new, objects, lights));
+	if (new == NULL)
+		return ;
+	find_colour_of_intersect(result, new, objects, lights);
 }

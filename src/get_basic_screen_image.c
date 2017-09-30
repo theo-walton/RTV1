@@ -16,27 +16,25 @@ void	get_basic_screen_image(t_screen *screen, int *image, t_object *objects, t_l
 {
 	int i;
 	t_intersect *intersect;
+	t_colour col;
 
 	i = 0;
 	while (i < X_DIM * Y_DIM)
 	{
-		if (1)//(i % X_DIM) % 2 == 0 && (i / X_DIM) % 2 == 0)
+		intersect = get_first_object_ray_hits(screen->coorarr + i, screen->vectors + i, objects);
+		if (intersect)
 		{
-			intersect = get_first_object_ray_hits(screen->coorarr + i, screen->vectors + i, objects);
-			if (intersect)
-			{
-				image[i] = find_colour_of_intersect(intersect, objects, lights);
-				get_reflect_col(NULL, NULL, NULL);
-			}
-			else
-			{
-				image[i] = 0x222222;
-				free(intersect);
-			}
+			find_colour_of_intersect(&col, intersect, objects, lights);
+//			if (col.red > 100)
+//				printf(" | %f, %f, %f |", col.red, col.green, col.blue);
+			image[i] = col_to_int(col);
+			get_reflect_col(NULL, NULL, NULL, NULL);
 		}
 		else
-			image[i] = -1;
+		{
+			image[i] = 0x222222;
+			free(intersect);
+		}
 		++i;
 	}
-	apply_pixel_extrapolation(image);
 }

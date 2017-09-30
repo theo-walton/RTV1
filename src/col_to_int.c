@@ -1,20 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   colour_sum.c                                       :+:      :+:    :+:   */
+/*   col_to_int.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: twalton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/09/15 19:25:39 by twalton           #+#    #+#             */
-/*   Updated: 2017/09/15 19:25:39 by twalton          ###   ########.fr       */
+/*   Created: 2017/09/20 21:10:42 by twalton           #+#    #+#             */
+/*   Updated: 2017/09/20 21:10:42 by twalton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-void	colour_sum(t_colour *result, t_colour col1, t_colour col2)
+int	col_to_int(t_colour col)
 {
-	result->red = col1.red + col2.red;
-	result->green = col1.green + col2.green;
-	result->blue = col1.blue + col2.blue;
+	int red;
+	int green;
+	int blue;
+
+	if ((red = col.red) > 255)
+		red = 255;
+	if ((green = col.green) > 255)
+                green = 255;
+	if ((blue = col.blue) > 255)
+                blue = 255;
+	return (blue + green * 256 + red * 256 * 256);
 }

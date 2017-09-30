@@ -16,9 +16,9 @@
 
 typedef struct s_colour
 {
-	int red;
-	int green;
-	int blue;
+	double red;
+	double green;
+	double blue;
 }	t_colour;
 
 typedef struct s_coor
@@ -33,12 +33,6 @@ typedef struct s_plane
 	t_coor normal;
 	t_coor point;
 }	t_plane;
-
-typedef struct s_line
-{
-	t_coor point;
-	t_coor vector;
-}	t_line;
 
 typedef struct s_sphere
 {
@@ -98,6 +92,7 @@ typedef struct	s_info
 	t_object *objects;
 	t_light *lights;
 	t_screen *screen;
+	char *layout;
 	void *mlx;
 	void *win;
 }	t_info;

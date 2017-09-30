@@ -1,20 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   colour_sum.c                                       :+:      :+:    :+:   */
+/*   rand_fct.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: twalton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/09/15 19:25:39 by twalton           #+#    #+#             */
-/*   Updated: 2017/09/15 19:25:39 by twalton          ###   ########.fr       */
+/*   Created: 2017/09/22 00:48:51 by twalton           #+#    #+#             */
+/*   Updated: 2017/09/22 00:48:51 by twalton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-void	colour_sum(t_colour *result, t_colour col1, t_colour col2)
+double	rand_fct(void)
 {
-	result->red = col1.red + col2.red;
-	result->green = col1.green + col2.green;
-	result->blue = col1.blue + col2.blue;
+	static int tog;
+	double ret;
+
+	if (!tog)
+	{
+		srand(time(NULL));
+		rand();
+		rand();
+		rand();
+		rand();
+		tog = 1;
+	}
+	ret = ((double)rand() / RAND_MAX);
+	return (ret);
 }

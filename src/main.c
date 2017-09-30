@@ -16,8 +16,9 @@ int	main(void)
 {
 	t_info info;
 
-	info.objects = objects_init();
-	info.lights = lights_init();
+	info.layout = ft_dirty_read(0, 100000);
+	info.objects = create_objects(info.layout);
+	info.lights = create_lights(info.layout);
 	info.screen = create_screen();
 	info.mlx = mlx_init();
 	info.win = mlx_new_window(info.mlx, X_DIM, Y_DIM, "");
