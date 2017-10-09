@@ -25,14 +25,12 @@ void	get_basic_screen_image(t_screen *screen, int *image, t_object *objects, t_l
 		if (intersect)
 		{
 			find_colour_of_intersect(&col, intersect, objects, lights);
-//			if (col.red > 100)
-//				printf(" | %f, %f, %f |", col.red, col.green, col.blue);
 			image[i] = col_to_int(col);
 			get_reflect_col(NULL, NULL, NULL, NULL);
 		}
 		else
 		{
-			image[i] = 0x222222;
+			image[i] = 0x22ff22;
 			free(intersect);
 		}
 		++i;

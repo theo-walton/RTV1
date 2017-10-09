@@ -62,6 +62,7 @@ t_object	*create_objects(char *str);
 void	parse_object(char *str, t_object *object);
 void	get_sphere_info(char *str, t_object *object);
 void	get_plane_info(char *str, t_object *object);
+void	get_cylinder_info(char *str, t_object *object);
 t_light	*create_lights(char *str);
 void	parse_light(char *str, t_light *light);
 t_screen	*create_screen(void);

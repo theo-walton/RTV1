@@ -1,0 +1,54 @@
+#4
++sphere
+	shine:100
+	red:0
+	green:0
+	blue:0
+	.
+		radius:400
+		x:00
+		y:0000
+		z:2000
++sphere
+	shine:5
+	red:40
+	green:40
+	blue:40
+	.
+		radius:50
+		x:-300
+		y:200
+		z:400
++plane
+	shine:1
+	red:255
+	green:255
+	blue:255
+	.
+		xpoint:0
+		ypoint:-500
+		zpoint:0
+		xnormal:0
+		ynormal:100
+		znormal:0
++cylinder
+	shine:0
+	red:200
+	green:200
+	blue:200
+	.
+		radius:200
+		xpoint:500
+		ypoint:500
+		zpoint:300
+		xvector:0
+		yvector:10
+		zvector:5
+$1
+>
+	xpoint:000
+	ypoint:1000
+	zpoint:0
+	red:16000
+	green:16000
+	blue:16000

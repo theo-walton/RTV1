@@ -5,6 +5,7 @@ SRC = \
 	$(addprefix src/, \
 \
 	create_objects.c \
+	get_cylinder_info.c \
 	create_lights.c \
 	parse_light.c \
 	parse_object.c \
@@ -107,6 +108,7 @@ OBJ =  \
 	create_screen.o \
 	dot_product.o \
 	draw_objects.o \
+	get_cylinder_info.o \
 	find_colour_of_intersect.o \
 	get_basic_screen_image.o \
 	get_first_object_ray_hits.o \
