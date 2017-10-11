@@ -1,18 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_cone_intersections.c                           :+:      :+:    :+:   */
+/*   get_normal_of_cone.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: twalton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/09/17 19:33:13 by twalton           #+#    #+#             */
-/*   Updated: 2017/09/17 19:33:13 by twalton          ###   ########.fr       */
+/*   Created: 2017/10/10 21:36:10 by twalton           #+#    #+#             */
+/*   Updated: 2017/10/10 21:36:10 by twalton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-int	get_cone_intersections(t_intersect *intersect, t_object *object, t_coor *point, t_coor *vector)
+void	get_normal_of_cone(t_coor *normal, t_intersect *intersect)
 {
-	t_cone *cone;
+	normal->x = 1;
+	normal->y = 1;
+	normal->z = 0;
 }

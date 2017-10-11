@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_cylinder_info.c                                :+:      :+:    :+:   */
+/*   get_cone_info.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: twalton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/09/29 21:05:21 by twalton           #+#    #+#             */
-/*   Updated: 2017/09/29 21:05:21 by twalton          ###   ########.fr       */
+/*   Created: 2017/10/10 20:35:45 by twalton           #+#    #+#             */
+/*   Updated: 2017/10/10 20:35:45 by twalton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,13 @@ static int	get_vector(char *str, char type)
 	return (ft_atoi(str));
 }
 
-static int	get_radius(char *str)
+static double	get_angle(char *str)
 {
-	str = ft_strstr(str, "radius:") + 7;
-	return (ft_atoi(str));
+	double angle;
+
+	str = ft_strstr(str, "angle:") + 6;
+	angle = (double)ft_atoi(str);
+	return (angle * M_PI / 180);
 }
 
 static void	normalize(t_coor *coor)
@@ -50,19 +53,19 @@ static void	normalize(t_coor *coor)
 	coor->z /= size;
 }
 
-void	get_cylinder_info(char *str, t_object *object)
+void	get_cone_info(char *str, t_object *object)
 {
-	t_cylinder *cylinder;
+	t_cone *cone;
 
-	cylinder = malloc(sizeof(t_cylinder));
-	cylinder->point.x = (double)get_point(str, 'X');
-	cylinder->point.y = (double)get_point(str, 'Y');
-	cylinder->point.z = (double)get_point(str, 'Z');
-	cylinder->vector.x = (double)get_vector(str, 'X');
-	cylinder->vector.y = (double)get_vector(str, 'Y');
-	cylinder->vector.z = (double)get_vector(str, 'Z');
-	cylinder->radius = (double)get_radius(str);
-	normalize(&(cylinder->vector));
-	object->type_info = cylinder;
-	object->type = CYLINDER;
+	cone = malloc(sizeof(t_cone));
+	cone->point.x = (double)get_point(str, 'X');
+	cone->point.y = (double)get_point(str, 'Y');
+	cone->point.z = (double)get_point(str, 'Z');
+	cone->vector.x = (double)get_vector(str, 'X');
+	cone->vector.y = (double)get_vector(str, 'Y');
+	cone->vector.z = (double)get_vector(str, 'Z');
+	cone->angle = get_angle(str);
+	normalize(&(cone->vector));
+	object->type_info = cone;
+	object->type = CONE;
 }

@@ -14,7 +14,15 @@
 
 void	get_normal_of_cylinder(t_coor *normal, t_intersect *intersect)
 {
-	normal->x = 0;
-	normal->y = 0;
-	normal->z = 1;
+	t_cylinder *cylinder;
+	t_coor temp;
+	double dist;
+
+	cylinder = intersect->object->type_info;
+	coor_diff(&temp, intersect->intersect, cylinder->point);
+	dist = dot_product(temp, cylinder->vector);
+	temp.x = cylinder->point.x + cylinder->vector.x * dist;
+	temp.y = cylinder->point.y + cylinder->vector.y * dist;
+	temp.z = cylinder->point.z + cylinder->vector.z * dist;
+	coor_diff(normal, temp, intersect->intersect);
 }

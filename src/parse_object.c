@@ -37,8 +37,8 @@ static int	object_type(char *str)
 		return (PLANE);
 	if (!ft_strncmp(str, "cylinder", 8))
 		return (CYLINDER);
-//	if (!ft_strncmp(str, "cone", 4))
-//		return (CONE);
+	if (!ft_strncmp(str, "cone", 4))
+		return (CONE);
 	return (0);
 }
 
@@ -58,6 +58,6 @@ void	parse_object(char *str, t_object *object)
 		get_plane_info(str, object);
 	if (type == CYLINDER)
 		get_cylinder_info(str, object);
-//	if (type == CONE)
-//		get_cone_info(str, object);
+	if (type == CONE)
+		get_cone_info(str, object);
 }

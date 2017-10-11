@@ -30,6 +30,7 @@
 # define SPHERE 1
 # define PLANE 2
 # define CYLINDER 3
+# define CONE 4
 
 # define VEIW_DIST 800
 
@@ -63,19 +64,22 @@ void	parse_object(char *str, t_object *object);
 void	get_sphere_info(char *str, t_object *object);
 void	get_plane_info(char *str, t_object *object);
 void	get_cylinder_info(char *str, t_object *object);
+void	get_cone_info(char *str, t_object *object);
 t_light	*create_lights(char *str);
 void	parse_light(char *str, t_light *light);
 t_screen	*create_screen(void);
 
-int	get_sphere_intersections(t_intersect *intersect, t_object *object, t_coor *point, t_coor *vector);
-int	get_plane_intersections(t_intersect *intersect, t_object *object, t_coor *point, t_coor *vector);
-int	get_cylinder_intersections(t_intersect *intersect, t_object *object, t_coor *point, t_coor *vector);
+double	get_sphere_dist(t_coor *point, t_coor *vector, t_object *object);
+double	get_plane_dist(t_coor *point, t_coor *vector, t_object *object);
+double	get_cylinder_dist(t_coor *point, t_coor *vector, t_object *object);
+double	get_cone_dist(t_coor *point, t_coor *vector, t_object *object);
 
 double	get_light_modifier(t_intersect *intersect, t_light *light);
 void	get_normal_to_intersect(t_coor *normal, t_intersect *intersect);
 void	get_normal_of_sphere(t_coor *normal, t_intersect *intersect);
 void	get_normal_of_plane(t_coor *normal, t_intersect *intersect);
 void	get_normal_of_cylinder(t_coor *normal, t_intersect *intersect);
+void	get_normal_of_cone(t_coor *normal, t_intersect *intersect);
 
 void	draw_objects(t_info *info);
 void	get_basic_screen_image(t_screen *screen, int *image, t_object *objects, t_light *lights);

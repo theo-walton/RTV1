@@ -1,35 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   second_order_solver.c                              :+:      :+:    :+:   */
+/*   get_plane_dist.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: twalton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/09/18 23:45:10 by twalton           #+#    #+#             */
-/*   Updated: 2017/09/18 23:45:10 by twalton          ###   ########.fr       */
+/*   Created: 2017/10/08 21:30:45 by twalton           #+#    #+#             */
+/*   Updated: 2017/10/08 21:30:45 by twalton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-void	second_order_solver(double *result, double a, double b, double c)
+double	get_plane_dist(t_coor *point, t_coor *vector, t_object *object)
 {
-	double disc;
+	t_plane *plane;
+	double dist;
+	t_coor temp;
 
-	disc = b * b - 4 * a * c;
-	if (disc < 0)
-	{
-		result[0] = INFIN;
-		result[1] = INFIN;
-		return ;
-	}
-	if (disc == 0)
-	{
-		result[0] = -b / (2 * a);
-		result[1] = INFIN;
-		return ;
-	}
-	disc = sqrt(disc);
-	result[0] = (-b + disc) / (2 * a);
-	result[1] = (-b - disc) / (2 * a);
+	plane = object->type_info;
+	coor_diff(&temp, plane->point, *point);
+	dist = dot_product(*vector, plane->normal);
+	if (dist == 0)
+		return (INFIN);
+	dist = dot_product(temp, plane->normal) / dist;
+	if (dist <= 1)
+		return (INFIN);
+	return (dist);
 }

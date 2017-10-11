@@ -49,7 +49,7 @@ typedef struct s_cylinder
 
 typedef struct s_cone
 {
-	t_coor center;
+	t_coor point;
 	t_coor vector;
 	double angle;
 }	t_cone;

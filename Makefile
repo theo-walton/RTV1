@@ -5,6 +5,12 @@ SRC = \
 	$(addprefix src/, \
 \
 	create_objects.c \
+	get_cone_info.c \
+	get_normal_of_cone.c \
+	get_cone_dist.c \
+	get_cylinder_dist.c \
+	get_plane_dist.c \
+	get_sphere_dist.c \
 	get_cylinder_info.c \
 	create_lights.c \
 	parse_light.c \
@@ -18,13 +24,11 @@ SRC = \
 	zero_colour.c \
 	col_to_int.c \
 	second_order_solver.c \
-	get_cylinder_intersections.c \
 	get_normal_of_cylinder.c \
 	cross_product.c \
 	get_line_point_distance.c \
 	get_shine.c \
 	malloc_break.c \
-	get_plane_intersections.c \
 	get_normal_of_plane.c \
 	get_reflection.c \
 	get_reflect_col.c \
@@ -41,7 +45,6 @@ SRC = \
 	find_colour_of_intersect.c \
 	get_basic_screen_image.c \
 	get_first_object_ray_hits.c \
-	get_sphere_intersections.c \
 	main.c \
 	apply_pixel_extrapolation.c \
 	colour_merge.c \
@@ -72,7 +75,12 @@ OBJ =  \
 	ft_strchr.o \
 	ft_dirty_read.o \
 	create_objects.o \
+	get_sphere_dist.o \
+	get_plane_dist.o \
 	create_lights.o \
+	get_cone_info.o \
+	get_normal_of_cone.o \
+	get_cone_dist.o \
 	parse_light.o \
 	parse_object.o \
 	get_sphere_info.o \
@@ -85,7 +93,6 @@ OBJ =  \
 	col_to_int.o \
 	zero_colour.o \
 	second_order_solver.o \
-	get_cylinder_intersections.o \
 	get_normal_of_cylinder.o \
 	get_line_point_distance.o \
 	get_shine.o \
@@ -95,9 +102,9 @@ OBJ =  \
 	get_reflect_col.o \
 	get_diffuse_col.o \
 	colour_sum.o \
-	get_plane_intersections.o \
 	get_normal_of_plane.o \
 	colour_percent.o \
+	get_cylinder_dist.o \
 	vector_size.o \
 	get_light_modifier.o \
 	get_normal_of_sphere.o \
@@ -112,7 +119,6 @@ OBJ =  \
 	find_colour_of_intersect.o \
 	get_basic_screen_image.o \
 	get_first_object_ray_hits.o \
-	get_sphere_intersections.o \
 	main.o \
 	path_to_light.o \
 	print_intersect.o \

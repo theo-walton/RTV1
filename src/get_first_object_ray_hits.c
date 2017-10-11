@@ -5,67 +5,51 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: twalton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/09/10 15:57:30 by twalton           #+#    #+#             */
-/*   Updated: 2017/09/10 15:57:30 by twalton          ###   ########.fr       */
+/*   Created: 2017/10/08 20:39:03 by twalton           #+#    #+#             */
+/*   Updated: 2017/10/08 20:39:03 by twalton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-static double	get_intersect_dist(t_coor *point, t_coor *vector, t_intersect *intersect)
+static t_intersect *new_intersect(double dist, t_coor *point, t_coor *vector, t_object *obj)
 {
-	double d;
+	t_intersect *ret;
 
-	if (intersect->object == NULL)
-		return (INFIN);
-	if (vector->x)
-	{
-		d = intersect->intersect.x - point->x;
-		return (d / vector->x);
-	}
-	if (vector->y)
-	{
-		d = intersect->intersect.y - point->y;
-		return (d / vector->y);
-	}
-	d = intersect->intersect.z - point->z;
-	return (d / vector->z);
+	ret = malloc(sizeof(t_intersect));
+	ret->intersect.x = point->x + vector->x * dist;
+	ret->intersect.y = point->y + vector->y * dist;
+	ret->intersect.z = point->z + vector->z * dist;
+	ret->vector.x = vector->x;
+	ret->vector.y = vector->y;
+	ret->vector.z = vector->z;
+	ret->object = obj;
+	return (ret);
 }
 
-static void	get_min_intersection(t_coor *point, t_coor *vector, t_intersect *intersects, int i)
+static int	get_min_dist(double *dist, int total_index)
 {
-	int min_index;
+	int i;
 	double min_dist;
-	double dist;
+	int min_index;
 
+	i = 0;
 	min_dist = INFIN;
-	while (i)
+	while (i < total_index)
 	{
-		dist = get_intersect_dist(point, vector, intersects + i - 1);
-		if (dist < min_dist)
+		if (min_dist > dist[i])
 		{
-			min_dist = dist;
-			min_index = i - 1;
+			min_dist = dist[i];
+			min_index = i;
 		}
-		--i;
+		++i;
 	}
-	ft_memmove(intersects, intersects + min_index, sizeof(t_intersect));
-}
-
-static t_intersect	*copy_intersect(t_intersect *src)
-{
-	t_intersect *dest;
-
-	if (!(dest = malloc(sizeof(t_intersect))))
-		exit(1);
-	ft_memmove(dest, src, sizeof(t_intersect));
-	return (dest);
+	return (min_index);
 }
 
 t_intersect	*get_first_object_ray_hits(t_coor *point, t_coor *vector, t_object *objects)
 {
-	t_intersect intersects[1000];
-	t_intersect *ret;
+	double dist[1000];
 	int counter;
 	int i;
 
@@ -74,22 +58,34 @@ t_intersect	*get_first_object_ray_hits(t_coor *point, t_coor *vector, t_object *
 	while (objects[i].type)
 	{
 		if (objects[i].type == SPHERE)
-			if (!get_sphere_intersections(intersects + 2 * i, objects + i, point, vector))
+			if ((dist[i] = get_sphere_dist(point, vector, objects + i)) == INFIN)
 				++counter;
 		if (objects[i].type == PLANE)
-			if (!get_plane_intersections(intersects + 2 * i, objects + i, point, vector))
+			if ((dist[i] = get_plane_dist(point, vector, objects + i)) == INFIN)
 				++counter;
 		if (objects[i].type == CYLINDER)
-			if (!get_cylinder_intersections(intersects + 2 * i, objects + i, point, vector))
+			if ((dist[i] = get_cylinder_dist(point, vector, objects + i)) == INFIN)
+				++counter;
+		if (objects[i].type == CONE)
+			if ((dist[i] = get_cone_dist(point, vector, objects + i)) == INFIN)
 				++counter;
 		++i;
 	}
 	if (i == counter)
 		return (NULL);
-	get_min_intersection(point, vector, intersects, 2 * i);
-	ret = copy_intersect(intersects);
-	ret->vector.x = vector->x;
-	ret->vector.y = vector->y;
-	ret->vector.z = vector->z;
-	return (ret);
+	i = get_min_dist(dist, i);
+	return (new_intersect(dist[i], point, vector, objects + i));
 }
+
+/*
+**  RETURNS:
+**  
+**  COORDINATE OF INTERSECTION,
+**  DIRECTION OF RAY,
+**  OBJECT THAT WAS INTERSECTED
+**
+**  ALL OF WHICH STORED INSIDE INTERSECT STRUCT
+**
+**  IF MULTIPLE INTERSECTIONS OCCUR, RETURNS THE FIRST.
+**  IF NO INTERSECTIONS OCCUR, RETURNS NULL.
+*/
