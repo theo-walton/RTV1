@@ -6,7 +6,7 @@
 /*   By: twalton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/18 23:54:10 by twalton           #+#    #+#             */
-/*   Updated: 2017/09/18 23:54:10 by twalton          ###   ########.fr       */
+/*   Updated: 2017/10/29 09:33:58 by twalton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	get_normal_of_cylinder(t_coor *normal, t_intersect *intersect)
 {
-	t_cylinder *cylinder;
-	t_coor temp;
-	double dist;
+	t_cylinder	*cylinder;
+	t_coor		temp;
+	double		dist;
 
 	cylinder = intersect->object->type_info;
 	coor_diff(&temp, intersect->intersect, cylinder->point);

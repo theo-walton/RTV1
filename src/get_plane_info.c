@@ -6,7 +6,7 @@
 /*   By: twalton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/28 20:39:18 by twalton           #+#    #+#             */
-/*   Updated: 2017/09/28 20:39:18 by twalton          ###   ########.fr       */
+/*   Updated: 2017/10/29 09:35:24 by twalton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,22 +15,22 @@
 static int	get_norm(char *str, char type)
 {
 	if (type == 'X')
-		str = ft_strstr(str, "xnormal:") + 8;
+		str = strstrexit(str, "xnormal:") + 8;
 	else if (type == 'Y')
-		str = ft_strstr(str, "ynormal:") + 8;
+		str = strstrexit(str, "ynormal:") + 8;
 	else if (type == 'Z')
-		str = ft_strstr(str, "znormal:") + 8;
+		str = strstrexit(str, "znormal:") + 8;
 	return (ft_atoi(str));
 }
 
 static int	get_point(char *str, char type)
 {
 	if (type == 'X')
-		str = ft_strstr(str, "xpoint:") + 7;
+		str = strstrexit(str, "xpoint:") + 7;
 	else if (type == 'Y')
-		str = ft_strstr(str, "ypoint:") + 7;
-	else if	(type == 'Z')
-		str = ft_strstr(str, "zpoint:") + 7;
+		str = strstrexit(str, "ypoint:") + 7;
+	else if (type == 'Z')
+		str = strstrexit(str, "zpoint:") + 7;
 	return (ft_atoi(str));
 }
 
@@ -44,7 +44,7 @@ static void	make_normal_unit_length(t_plane *plane)
 	plane->normal.z /= dot;
 }
 
-void	get_plane_info(char *str, t_object *object)
+void		get_plane_info(char *str, t_object *object)
 {
 	t_plane *plane;
 

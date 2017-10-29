@@ -4,8 +4,14 @@ NAME = rt
 SRC = \
 	$(addprefix src/, \
 \
+	strstrexit.c \
+	strchrexit.c \
+	create_scene.c \
+	set_hooks.c \
 	create_objects.c \
 	get_cone_info.c \
+	transform_screen.c \
+	parse_screen.c \
 	get_normal_of_cone.c \
 	get_cone_dist.c \
 	get_cylinder_dist.c \
@@ -57,8 +63,6 @@ SRC = \
 	ft_strlen.c \
 	ft_atoi.c \
 	ft_strncmp.c \
-	ft_strstr.c \
-	ft_strchr.c \
 	ft_dirty_read.c \
 	ft_memmove.c \
 	ft_memset.c \
@@ -68,11 +72,13 @@ SRC = \
 OBJ =  \
 	$(addprefix obj/, \
 \
+	strstrexit.o \
+	strchrexit.o \
 	ft_strlen.o \
+	create_scene.o \
+	set_hooks.o \
 	ft_atoi.o \
 	ft_strncmp.o \
-	ft_strstr.o \
-	ft_strchr.o \
 	ft_dirty_read.o \
 	create_objects.o \
 	get_sphere_dist.o \
@@ -92,6 +98,8 @@ OBJ =  \
 	get_random_vector.o \
 	col_to_int.o \
 	zero_colour.o \
+	transform_screen.o \
+	parse_screen.o \
 	second_order_solver.o \
 	get_normal_of_cylinder.o \
 	get_line_point_distance.o \
@@ -125,7 +133,7 @@ OBJ =  \
 	) \
 \
 
-FLAGS = # -Wall -Wextra -Werror
+FLAGS =  -Wall -Wextra -Werror
 
 INC = -I ./minilibx -I ./includes -I ./libft/includes
 

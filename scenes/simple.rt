@@ -1,3 +1,12 @@
+
+screen
+	xcenter:0
+	ycenter:0
+	zcenter:-8000
+	xangle:0
+	yangle:0
+	zangle:0
+
 #3
 +sphere
 	shine:0

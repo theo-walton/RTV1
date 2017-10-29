@@ -1,31 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   col_to_int.c                                       :+:      :+:    :+:   */
+/*   create_scene.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: twalton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/09/20 21:10:42 by twalton           #+#    #+#             */
-/*   Updated: 2017/10/29 08:47:17 by twalton          ###   ########.fr       */
+/*   Created: 2017/10/29 08:12:36 by twalton           #+#    #+#             */
+/*   Updated: 2017/10/29 08:12:36 by twalton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-int	col_to_int(t_colour col)
+t_image	*create_scene(t_info *info)
 {
-	int red;
-	int green;
-	int blue;
+	t_image *i;
 
-	red = col.red;
-	green = col.green;
-	blue = col.blue;
-	if (col.red > 255)
-		red = 255;
-	if (col.green > 255)
-		green = 255;
-	if (col.blue > 255)
-		blue = 255;
-	return (blue + green * 256 + red * 256 * 256);
+	i = malloc(sizeof(t_image));
+	i->ptr = mlx_new_image(info->mlx, X_DIM, Y_DIM);
+	i->im = (int*)mlx_get_data_addr(i->ptr, &i->bpp, &i->line_sz, &i->end);
+	get_basic_screen_image(info->screen, i->im, info->objects, info->lights);
+	return (i);
 }

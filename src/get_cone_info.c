@@ -6,31 +6,31 @@
 /*   By: twalton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/10 20:35:45 by twalton           #+#    #+#             */
-/*   Updated: 2017/10/10 20:35:45 by twalton          ###   ########.fr       */
+/*   Updated: 2017/10/29 08:55:00 by twalton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-static int	get_point(char *str, char type)
+static int		get_point(char *str, char type)
 {
 	if (type == 'X')
-		str = ft_strstr(str, "xpoint:") + 7;
+		str = strstrexit(str, "xpoint:") + 7;
 	if (type == 'Y')
-		str = ft_strstr(str, "ypoint:") + 7;
+		str = strstrexit(str, "ypoint:") + 7;
 	if (type == 'Z')
-		str = ft_strstr(str, "zpoint:") + 7;
+		str = strstrexit(str, "zpoint:") + 7;
 	return (ft_atoi(str));
 }
 
-static int	get_vector(char *str, char type)
+static int		get_vector(char *str, char type)
 {
 	if (type == 'X')
-		str = ft_strstr(str, "xvector:") + 8;
+		str = strstrexit(str, "xvector:") + 8;
 	if (type == 'Y')
-		str = ft_strstr(str, "yvector:") + 8;
+		str = strstrexit(str, "yvector:") + 8;
 	if (type == 'Z')
-		str = ft_strstr(str, "zvector:") + 8;
+		str = strstrexit(str, "zvector:") + 8;
 	return (ft_atoi(str));
 }
 
@@ -38,12 +38,12 @@ static double	get_angle(char *str)
 {
 	double angle;
 
-	str = ft_strstr(str, "angle:") + 6;
+	str = strstrexit(str, "angle:") + 6;
 	angle = (double)ft_atoi(str);
 	return (angle * M_PI / 180);
 }
 
-static void	normalize(t_coor *coor)
+static void		normalize(t_coor *coor)
 {
 	double size;
 
@@ -53,7 +53,7 @@ static void	normalize(t_coor *coor)
 	coor->z /= size;
 }
 
-void	get_cone_info(char *str, t_object *object)
+void			get_cone_info(char *str, t_object *object)
 {
 	t_cone *cone;
 

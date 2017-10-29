@@ -19,9 +19,10 @@ int	main(void)
 	info.layout = ft_dirty_read(0, 100000);
 	info.objects = create_objects(info.layout);
 	info.lights = create_lights(info.layout);
-	info.screen = create_screen();
+	info.screen = create_screen(info.layout);
 	info.mlx = mlx_init();
+	info.im = create_scene(&info);
 	info.win = mlx_new_window(info.mlx, X_DIM, Y_DIM, "");
-	draw_objects(&info);
+	set_hooks(&info);
 	mlx_loop(info.mlx);
 }

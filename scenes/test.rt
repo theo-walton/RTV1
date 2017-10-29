@@ -1,0 +1,74 @@
+
+screen
+	xcenter:0
+	ycenter:0
+	zcenter:-20000
+	xangle:0
+	yangle:-0
+	zangle:0
+
+#2
+sphere
+	shine:0
+	red:255
+	green:0
+	blue:0
+	.	
+		radius:200
+		x:1000
+		y:2050
+		z:0
+
+plane
+	shine:0
+	red:200
+	green:50
+	blue:50
+	.
+		xpoint:0
+		ypoint:0
+		zpoint:1000
+		xnormal:0
+		ynormal:0
+		znormal:1
++cone
+	shine:50
+	red:255
+	green:240
+	blue:190
+	.
+		xpoint:0
+		ypoint:0
+		zpoint:0
+		xvector:0
+		yvector:1
+		zvector:0
+		angle:50
++cylinder
+	shine:40
+	red:200
+	green:100
+	blue:20
+	.
+		radius:1000
+		xpoint:-4000
+		ypoint:0
+		zpoint:-2000
+		xvector:0
+		yvector:10
+		zvector:0
+$1
+>
+	xpoint:0
+	ypoint:0
+	zpoint:-15000
+	red:6000000
+	green:6000000
+	blue:6000000
+
+        xpoint:-2000
+        ypoint:0
+        zpoint:999
+        red:6000000
+        green:6000000
+        blue:6000000

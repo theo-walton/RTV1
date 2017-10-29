@@ -6,7 +6,7 @@
 /*   By: twalton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/28 20:19:47 by twalton           #+#    #+#             */
-/*   Updated: 2017/09/28 20:19:47 by twalton          ###   ########.fr       */
+/*   Updated: 2017/10/29 09:40:30 by twalton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,29 @@
 
 static int	get_radius(char *str)
 {
-	str = ft_strstr(str, "radius:") + 7;
+	str = strstrexit(str, "radius:") + 7;
 	return (ft_atoi(str));
 }
 
 static int	get_x(char *str)
 {
-	str = ft_strstr(str, "x:") + 2;
+	str = strstrexit(str, "x:") + 2;
 	return (ft_atoi(str));
 }
 
 static int	get_y(char *str)
 {
-	str = ft_strstr(str, "y:") + 2;
+	str = strstrexit(str, "y:") + 2;
 	return (ft_atoi(str));
 }
 
 static int	get_z(char *str)
 {
-	str = ft_strstr(str, "z:") + 2;
+	str = strstrexit(str, "z:") + 2;
 	return (ft_atoi(str));
 }
 
-void	get_sphere_info(char *str, t_object *object)
+void		get_sphere_info(char *str, t_object *object)
 {
 	t_sphere *sphere;
 

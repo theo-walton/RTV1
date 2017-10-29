@@ -6,7 +6,7 @@
 /*   By: twalton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/22 00:48:51 by twalton           #+#    #+#             */
-/*   Updated: 2017/09/22 00:48:51 by twalton          ###   ########.fr       */
+/*   Updated: 2017/10/29 09:44:21 by twalton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 double	rand_fct(void)
 {
-	static int tog;
-	double ret;
+	static int	tog;
+	double		ret;
 
 	if (!tog)
 	{

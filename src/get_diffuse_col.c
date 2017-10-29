@@ -6,7 +6,7 @@
 /*   By: twalton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/15 19:37:07 by twalton           #+#    #+#             */
-/*   Updated: 2017/09/15 19:37:07 by twalton          ###   ########.fr       */
+/*   Updated: 2017/10/29 09:00:24 by twalton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ static double	get_sqr_distance(t_coor *coor, t_light *light)
 	return (sum);
 }
 
-static void	intersect_colour(t_colour *result, t_intersect *intersect, t_light *light)
+static void		intersect_colour(t_colour *result,
+				t_intersect *intersect, t_light *light)
 {
 	double dist;
 	double light_modifier;
@@ -40,10 +41,11 @@ static void	intersect_colour(t_colour *result, t_intersect *intersect, t_light *
 	result->blue *= intersect->object->blue / 255.0;
 }
 
-void	get_diffuse_col(t_colour *result, t_intersect *intersect, t_object *objects, t_light *lights)
+void			get_diffuse_col(t_colour *result, t_intersect *intersect,
+					t_object *objects, t_light *lights)
 {
-	int i;
-	t_colour col1;
+	int			i;
+	t_colour	col1;
 
 	i = 0;
 	zero_colour(result);

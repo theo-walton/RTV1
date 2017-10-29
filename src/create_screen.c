@@ -6,7 +6,7 @@
 /*   By: twalton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/09 14:14:25 by twalton           #+#    #+#             */
-/*   Updated: 2017/09/09 14:14:25 by twalton          ###   ########.fr       */
+/*   Updated: 2017/10/29 08:54:02 by twalton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ static void	vect_init(t_coor *result, t_coor *coor1, t_coor *coor2)
 
 static void	initialize_vectors(t_screen *new)
 {
-	int i;
-	int j;
-	t_coor veiw_point;
+	int		i;
+	int		j;
+	t_coor	veiw_point;
 
 	veiw_point.x = 0;
 	veiw_point.y = 0;
@@ -72,14 +72,18 @@ static void	initialize_coordinates(t_screen *new)
 	}
 }
 
-t_screen	*create_screen(void)
+t_screen	*create_screen(char *str)
 {
-	t_screen *new;
+	t_screen	*new;
+	t_coor		center;
+	t_coor		direction;
 
+	parse_screen(str, &center, &direction);
 	new = malloc(sizeof(t_screen));
 	new->coorarr = malloc(sizeof(t_coor) * X_DIM * Y_DIM);
 	new->vectors = malloc(sizeof(t_coor) * X_DIM * Y_DIM);
 	initialize_coordinates(new);
 	initialize_vectors(new);
+	transform_screen(new, center, direction);
 	return (new);
 }

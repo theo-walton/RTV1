@@ -6,7 +6,7 @@
 /*   By: twalton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/14 15:54:08 by twalton           #+#    #+#             */
-/*   Updated: 2017/09/14 15:54:08 by twalton          ###   ########.fr       */
+/*   Updated: 2017/10/29 08:46:36 by twalton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,13 @@ static void	extrapolate_type1(int *image, int i)
 		if (i % X_DIM != X_DIM - 1)
 			image[i] = colour_merge(image[i - 1], image[i + 1]);
 		else
-			image[i] = image[i -1];
+			image[i] = image[i - 1];
 	}
 	else
 		image[i] = image[i + 1];
 }
 
-void	apply_pixel_extrapolation(int *image)
+void		apply_pixel_extrapolation(int *image)
 {
 	int i;
 

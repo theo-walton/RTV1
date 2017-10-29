@@ -6,17 +6,18 @@
 /*   By: twalton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/15 19:48:29 by twalton           #+#    #+#             */
-/*   Updated: 2017/09/15 19:48:29 by twalton          ###   ########.fr       */
+/*   Updated: 2017/10/29 09:37:29 by twalton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-void	get_reflect_col(t_colour *result, t_intersect *intersect, t_object *objects, t_light *lights)
+void	get_reflect_col(t_colour *result, t_intersect *intersect,
+						t_object *objects, t_light *lights)
 {
-	t_coor reflect;
-	t_intersect *new;
-	static unsigned int total_reflections;
+	t_coor				reflect;
+	t_intersect			*new;
+	static unsigned int	total_reflections;
 
 	if (result == NULL)
 	{

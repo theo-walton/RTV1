@@ -12,7 +12,8 @@
 
 #include "rtv1.h"
 
-void	get_reflection(t_coor *reflection, t_coor *vector, t_intersect *intersect)
+void	get_reflection(t_coor *reflection, t_coor *vector,
+			t_intersect *intersect)
 {
 	t_coor normal;
 	double size;

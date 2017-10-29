@@ -6,7 +6,7 @@
 /*   By: twalton <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/10 16:34:54 by twalton           #+#    #+#             */
-/*   Updated: 2017/09/10 16:34:54 by twalton          ###   ########.fr       */
+/*   Updated: 2017/10/29 09:43:52 by twalton          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,11 @@ static int	distance_check(t_intersect *intersect, t_coor coor, double dist)
 	return (0);
 }
 
-int	path_to_light(t_coor coor, t_object *objects, t_light *light)
+int			path_to_light(t_coor coor, t_object *objects, t_light *light)
 {
-	t_coor vector;
-	double dist;
-	t_intersect *intersect;
+	t_coor		vector;
+	double		dist;
+	t_intersect	*intersect;
 
 	vector.x = light->x - coor.x;
 	vector.y = light->y - coor.y;
