@@ -1,0 +1,31 @@
+screen
+	xcenter:0
+	ycenter:0
+	zcenter:-20000
+	xangle:0
+	yangle:0
+	zangle:0
+
+#1
++cylinder
+	shine:0
+	red:255
+	green:255
+	blue:255
+	.
+		radius:2000
+		xpoint:0
+		ypoint:0
+		zpoint:0
+		xvector:0
+		yvector:1
+		zvector:0
+
+$1
+>
+	xpoint:0
+	ypoint:0
+	zpoint:-20000
+	red:4000000
+	green:4000000
+	blue:4000000

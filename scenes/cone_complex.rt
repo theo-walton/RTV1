@@ -1,0 +1,128 @@
+screen
+	xcenter:0
+	ycenter:5000
+	zcenter:-20000
+	xangle:10
+	yangle:0
+	zangle:0
+
+#8
++cone
+	shine:40
+	red:100
+	green:100
+	blue:255
+	.
+		xpoint:4000
+		ypoint:0
+		zpoint:7000
+		xvector:10
+		yvector:0
+		zvector:0
+		angle:10
++cone
+	shine:35
+	red:120
+	green:100
+	blue:255
+	.
+		xpoint:3000
+		ypoint:0
+		zpoint:6000
+		xvector:10
+		yvector:1
+		zvector:0
+		angle:10
++cone
+	shine:30
+	red:140
+	green:100
+	blue:255
+	.
+		xpoint:2000
+		ypoint:0
+		zpoint:5000
+		xvector:10
+		yvector:2
+		zvector:0
+		angle:10
++cone
+	shine:25
+	red:160
+	green:100
+	blue:255
+	.
+		xpoint:1000
+		ypoint:0
+		zpoint:4000
+		xvector:10
+		yvector:3
+		zvector:0
+		angle:10
++cone
+	shine:20
+	red:180
+	green:100
+	blue:255
+	.
+		xpoint:0
+		ypoint:0
+		zpoint:3000
+		xvector:10
+		yvector:4
+		zvector:0
+		angle:10
++cone
+        shine:15
+        red:200
+        green:100
+        blue:255
+        .
+                xpoint:-1000
+                ypoint:0
+                zpoint:2000
+                xvector:10
+                yvector:5
+                zvector:0
+                angle:10
++cone
+        shine:10
+        red:220
+        green:100
+        blue:255
+        .
+                xpoint:-2000
+                ypoint:0
+                zpoint:1000
+                xvector:10
+                yvector:6
+                zvector:0
+                angle:10
++cone
+        shine:5
+        red:240
+        green:100
+        blue:255
+        .
+                xpoint:-3000
+                ypoint:0
+                zpoint:0
+                xvector:10
+                yvector:7
+                zvector:0
+                angle:10
+$2
+>
+	xpoint:-10000
+	ypoint:-10000
+	zpoint:-20000
+	red:4000000
+	green:4000000
+	blue:4000000
+>
+        xpoint:10000
+        ypoint:10000
+        zpoint:-20000
+        red:4000000
+        green:4000000
+        blue:4000000

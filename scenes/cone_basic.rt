@@ -1,17 +1,17 @@
 screen
-	xcenter:50000
+	xcenter:0
 	ycenter:0
-	zcenter:0
+	zcenter:-20000
 	xangle:0
-	yangle:-90
+	yangle:0
 	zangle:0
 
 #1
 +cone
-	shine:50
-	red:255
-	green:240
-	blue:190
+	shine:0
+	red:100
+	green:100
+	blue:255
 	.
 		xpoint:0
 		ypoint:0
@@ -20,11 +20,12 @@ screen
 		yvector:1
 		zvector:0
 		angle:30
+
 $1
 >
 	xpoint:0
 	ypoint:0
-	zpoint:10000
-	red:6000000
-	green:6000000
-	blue:6000000
+	zpoint:-20000
+	red:4000000
+	green:4000000
+	blue:4000000

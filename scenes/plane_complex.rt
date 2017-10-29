@@ -1,0 +1,90 @@
+screen
+	xcenter:0
+	ycenter:0
+	zcenter:-35000
+	xangle:0
+	yangle:0
+	zangle:0
+
+#6
++plane
+	shine:100
+	red:100
+	green:255
+	blue:100
+	.
+		xpoint:0
+		ypoint:0
+		zpoint:0
+		xnormal:0
+		ynormal:0
+		znormal:100
++plane
+	shine:40
+	red:255
+	green:100
+	blue:100
+	.
+		xpoint:0
+		ypoint:0
+		zpoint:-40000
+		xnormal:0
+		ynormal:0
+		znormal:100
++plane
+	shine:40
+	red:100
+	green:255
+	blue:255
+	.
+		xpoint:-20000
+		ypoint:0
+		zpoint:0
+		xnormal:100
+		ynormal:0
+		znormal:0
++plane
+	shine:40
+	red:255
+	green:100
+	blue:255
+	.
+		xpoint:20000
+		ypoint:0
+		zpoint:0
+		xnormal:100
+		ynormal:0
+		znormal:0
++plane
+	shine:40
+	red:100
+	green:100
+	blue:255
+	.
+		xpoint:0
+		ypoint:-20000
+		zpoint:0
+		xnormal:0
+		ynormal:100
+		znormal:0
++plane
+	shine:0
+	red:255
+	green:255
+	blue:255
+	.
+		xpoint:0
+		ypoint:20000
+		zpoint:0
+		xnormal:0
+		ynormal:100
+		znormal:0
+
+$1
+>
+	xpoint:0
+	ypoint:19000
+	zpoint:-20000
+	red:4000000
+	green:4000000
+	blue:4000000

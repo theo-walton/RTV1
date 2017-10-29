@@ -1,0 +1,49 @@
+screen
+	xcenter:0
+	ycenter:0
+	zcenter:-20000
+	xangle:0
+	yangle:0
+	zangle:0
+
+#1
++sphere
+	shine:50
+	red:255
+	green:255
+	blue:255
+	.
+		radius:4000
+		x:0
+		y:0
+		z:0
+
+$4
+>
+	xpoint:10000
+	ypoint:10000
+	zpoint:-20000
+	red:4000000
+	green:0
+	blue:0
+>
+	xpoint:-10000
+	ypoint:-10000
+	zpoint:-20000
+	red:0
+	green:0
+	blue:4000000
+>
+	xpoint:10000
+	ypoint:-10000
+	zpoint:-20000
+	red:0
+	green:4000000
+	blue:0
+>
+	xpoint:-10000
+	ypoint:10000
+	zpoint:-20000
+	red:4000000
+	green:4000000
+	blue:4000000
