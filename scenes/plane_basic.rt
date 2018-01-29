@@ -17,7 +17,7 @@ screen
 		ypoint:0
 		zpoint:0
 		xnormal:0
-		ynormal:0
+		ynormal:100
 		znormal:100
 
 $1

@@ -6,7 +6,21 @@ screen
 	yangle:0
 	zangle:0
 
-#1
+#3
+
++plane
+	shine:5
+	red:100
+	green:100
+	blue:200
+	.
+		xpoint:0
+		ypoint:-20000
+		zpoint:0
+		xnormal:0
+		ynormal:0
+		znormal:1
+
 +sphere
 	shine:50
 	red:255
@@ -17,6 +31,17 @@ screen
 		x:0
 		y:0
 		z:0
+
++sphere
+        shine:100
+        red:255
+        green:255
+        blue:255
+        .
+                radius:1000
+                x:-5000
+                y:0
+                z:-10000
 
 $4
 >

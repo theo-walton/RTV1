@@ -32,7 +32,7 @@ screen
 		ynormal:100
 		znormal:0
 +cylinder
-	shine:0
+	shine:10
 	red:255
 	green:255
 	blue:255
@@ -45,7 +45,7 @@ screen
 		yvector:10
 		zvector:4
 +cylinder
-	shine:0
+	shine:20
 	red:255
 	green:255
 	blue:255
@@ -58,7 +58,7 @@ screen
 		yvector:2
 		zvector:0
 +cone
-	shine:0
+	shine:70
 	red:100
 	green:100
 	blue:255
@@ -71,7 +71,7 @@ screen
 		zvector:0
 		angle:30
 +sphere
-	shine:0
+	shine:10
 	red:255
 	green:100
 	blue:100
